@@ -1,15 +1,36 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 
 
 import { ErrorRequestHandler } from "express"
-import { ZodError } from "zod"
-import config from "../../../config"
-import { IGenericErrorMessage } from "../../interfaces/error"
+import { ZodError } from "zod"  
 import ApiError from "../errors/ApiErorr"
 import handleCastError from "../errors/handleCastError"
 import handleValidationError from "../errors/handleValidationError"
-import handleZodError from "../errors/handleZodError"
+import handleZodError from "../errors/handleZodError" 
+import config from "../../../config"
  
 
+export type IGenericErrorMessage = {
+    path: string | number
+    message: string
+}
+ 
+export type IGenericErrorResponse = {
+    statusCode: number;
+    message: string;
+    errorMessage: IGenericErrorMessage[]
+
+}
+
+export type IGenericResponse<T> = {
+    meta: {
+      page: number,
+      limit: number,
+      total: number,
+    }
+    data: T
+}
 
 const globalErrorHandler: ErrorRequestHandler
     = (error, req,  res, next ) => {
