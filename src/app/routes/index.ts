@@ -1,12 +1,12 @@
  
 import express from 'express';
-import { BookRoutes } from '../modules/book/book.route';
+import { PcRoutes } from '../modules/book/pc.route';
 const router = express.Router();
 
 const moduleRoutes = [
     {
-         path: '/book',
-         route: BookRoutes,
+         path: '/pcparts',
+         route: PcRoutes,
     }, 
 ]
 moduleRoutes.forEach(route => router.use(route.path, route.route));
