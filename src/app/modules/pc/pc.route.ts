@@ -4,6 +4,7 @@ const router = express.Router()
 
  
 router.get('/', PCController.getAll) 
+router.get('/:id', PCController.getSingleProduct) 
 router.post('/create', PCController.createPc) 
 
 

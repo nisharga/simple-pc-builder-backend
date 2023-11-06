@@ -29,8 +29,20 @@ import httpStatus from 'http-status';
     },
   )
 
+  const getSingleProduct = catchAsync(async (req: Request, res: Response) => {
+    const id = req.params.id
+    const result = await PCService.getSingleProduct(id) 
+    sendResponse<IPc>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Single PC information Retrived Successfully',
+      data: result,
+    })
+  })
+  
 
   export const PCController = {
     getAll,
-    createPc
+    createPc,
+    getSingleProduct
   }
